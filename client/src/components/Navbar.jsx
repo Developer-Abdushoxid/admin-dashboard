@@ -4,7 +4,7 @@ import {
     DarkModeOutlined,
     Menu as MenuIcon,
     Search,
-    SettingOutlined,
+    SettingsOutlined,
     ArrowDropDownOutlined,
 } from '@mui/icons-material';
 import FlexBetween from 'components/FlexBetween';
@@ -50,7 +50,7 @@ const Navbar = () => {
                 )}
             </IconButton>
             <IconButton>
-                <SettingOutlined sx={{ fontSize: '25px'}} />
+                <SettingsOutlined sx={{ fontSize: '25px'}} />
             </IconButton>
         </FlexBetween>
      </Toolbar>
