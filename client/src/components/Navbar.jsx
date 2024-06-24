@@ -9,14 +9,20 @@ import {
 import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'state';
-import { AppBar, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
+import { AppBar, Button, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
 
 const Navbar = ({
+    user,
     isSidebarOpen,
     setIsSidebarOpen,
 }) => {
     const dispatch = useDispatch();
     const theme = useTheme();
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const isOpen = Boolean(anchorEl);
+    const handleClick = (event) => setAnchorEl(event.currentTarget);
+    const handleClose = () => setAnchorEl(null);
   return (
     <AppBar
     sx={{
@@ -53,6 +59,11 @@ const Navbar = ({
             <IconButton>
                 <SettingsOutlined sx={{ fontSize: '25px'}} />
             </IconButton>
+            <FlexBetween>
+                <Button onClick={handleClick} sx={{ display: 'flex', justifyContent: 'space-between'}}>
+
+                </Button>
+            </FlexBetween>
         </FlexBetween>
      </Toolbar>
     </AppBar>
