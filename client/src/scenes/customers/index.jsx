@@ -3,11 +3,13 @@ import { Box, useTheme } from '@mui/material';
 import { useGetCustomersQuery } from 'state/api';
 import Header from 'components/Header';
 import { DataGrid } from '@mui/x-data-grid';
+
+
 const Customers = () => {
     const theme = useTheme();
     const { data, isLoading } = useGetCustomersQuery();
     console.log('data', data)
-    const colums = [
+    const columns = [
         {
             field: '_id',
             headerName: 'ID',
@@ -48,9 +50,9 @@ const Customers = () => {
         },
     ]
   return (
-       <Box m='1.5rem 2.5rem'>
-        <Header title='CUSTOMERS' subtitle='List of Customers' />
-        <Box mt='40px' height='75vh'
+    <Box m='0' width='100vw' height='100vh'>
+    <Header title='CUSTOMERS' subtitle='List of Customers' />
+    <Box mt='40px' height='calc(100vh - 40px)'
         sx={{
             '& .MuiDataGrid-root': {
                 border: 'none'
@@ -80,7 +82,7 @@ const Customers = () => {
             loading={isLoading || !data}
             getRowId={(row) => row._id}
             rows={data || []}
-            columns={colums} />
+            columns={columns} />
         </Box>
        </Box>
 )
