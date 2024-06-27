@@ -9,33 +9,37 @@ import {
 } from "@mui/x-data-grid";
 import FlexBetween from './FlexBetween';
 
-const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch}) => {
-  return  <GridToolbarContainer>
-    <FlexBetween width='100%'>
+const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
+  return (
+    <GridToolbarContainer>
+      <FlexBetween width='100%'>
         <GridToolbarColumnsButton />
         <GridToolbarDensitySelector />
         <GridToolbarExport />
-    </FlexBetween>
-    <TextField label='Search...'
-    sx={{ mb: '0.5rem', width: '15rem'}}
-    onChange={(e) => setSearchInput(e.target.value)}
-    value={searchInput}
-    variant='standard'
-    inputProps={{
-        endAdorment: (
+      </FlexBetween>
+      <TextField
+        label='Search...'
+        sx={{ mb: '0.5rem', width: '15rem' }}
+        onChange={(e) => setSearchInput(e.target.value)}
+        value={searchInput}
+        variant='standard'
+        InputProps={{
+          endAdornment: ( // endAdorment o'rniga endAdornment
             <InputAdornment position='end'>
-                <IconButton onClick={() => {
-                    setSearch(searchInput);
-                    setSearchInput("");
-                }}>
-                    <Search /> 
-                </IconButton>
+              <IconButton
+                onClick={() => {
+                  setSearch(searchInput);
+                  setSearchInput("");
+                }}
+              >
+                <Search />
+              </IconButton>
             </InputAdornment>
-        )
-    }}
-    
-    />
-  </GridToolbarContainer>
+          ),
+        }}
+      />
+    </GridToolbarContainer>
+  );
 }
 
-export default DataGridCustomToolbar
+export default DataGridCustomToolbar;
