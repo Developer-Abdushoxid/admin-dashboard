@@ -7,7 +7,9 @@ const BreakdownChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
 
-  if (!data || isLoading) return "Loading...";
+  if (isLoading || !data || !data.salesByCategory || !data.yearlySalesTotal) {
+    return "Loading...";
+  }
 
   const colors = [
     theme.palette.secondary[500],
@@ -15,19 +17,19 @@ const BreakdownChart = ({ isDashboard = false }) => {
     theme.palette.secondary[300],
     theme.palette.secondary[500],
   ];
+
   const formattedData = Object.entries(data.salesByCategory).map(
     ([category, sales], i) => ({
       id: category,
       label: category,
       value: sales,
-      color: colors[i],
+      color: colors[i % colors.length], // Rang indeksini cheklash
     })
   );
 
   return (
     <Box
       height={isDashboard ? "400px" : "100%"}
-      width={undefined}
       minHeight={isDashboard ? "325px" : undefined}
       minWidth={isDashboard ? "325px" : undefined}
       position="relative"
